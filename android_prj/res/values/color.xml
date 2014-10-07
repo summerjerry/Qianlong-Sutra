@@ -1,0 +1,11 @@
+<resources>
+
+    <color name="yellow">#ffff00</color>
+    <color name="golden">#ffd700</color>
+    <color name="light_golden">#ffa355</color>
+    <color name="rod_golden">#daa520</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="font_color_dark">#FF333333</color>
+
+</resources>

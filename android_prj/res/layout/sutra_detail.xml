@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sutra_detail_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/golden" >
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/main_page_tab_height"
+        android:background="@drawable/tab_selected"
+        android:gravity="center"
+        android:padding="5dp"
+        android:scrollbars="vertical"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sutra_content_size"
+        android:textStyle="bold" />
+
+    <com.buddhism.view.ObservableScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/txt_title" >
+
+        <com.buddhism.view.SelectableTextView
+            android:id="@+id/txt_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:bufferType="spannable"
+            android:paddingBottom="16dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="4dp"
+            android:paddingTop="16dp"
+            android:scrollbars="vertical"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sutra_content_size" />
+    </com.buddhism.view.ObservableScrollView>
+
+    <RelativeLayout
+        android:id="@+id/content_progress_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/scroll_view"
+        android:layout_marginBottom="5dp" >
+
+        <TextView
+            android:id="@+id/content_next_page_button"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/next_page_bg"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="@string/next_page"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/content_seekbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_toLeftOf="@id/content_next_page_button"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:progressDrawable="@drawable/seekbar_content_progress"
+            android:thumb="@drawable/seek_bt"
+            android:thumbOffset="0.0dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/detail_setting_view"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/setting_height"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/setting_margin"
+        android:background="@color/main_page_setting_bg"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/detail_setting_brightness"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/detail_setting_brightness_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/setting_brightness"
+                android:textColor="@color/main_page_tab_select_text_color"
+                android:textSize="@dimen/setting_text_font" />
+
+            <ImageView
+                android:id="@+id/detail_setting_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/detail_setting_brightness_text"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/brightness"
+                android:contentDescription="@string/setting_brightness" />
+
+            <SeekBar
+                android:id="@+id/detail_setting_seekbar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/detail_setting_brightness_text"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="4dp"
+                android:layout_toLeftOf="@id/detail_setting_image"
+                android:layout_toRightOf="@id/detail_setting_brightness_text"
+                android:gravity="center"
+                android:progressDrawable="@drawable/seekbar_progress"
+                android:thumb="@drawable/seek_bt"
+                android:thumbOffset="1.0dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/detail_setting_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_setting_brightness"
+            android:layout_margin="@dimen/setting_margin"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/setting_font_size"
+                android:textColor="@color/main_page_tab_select_text_color"
+                android:textSize="@dimen/setting_text_font" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/setting_read_mode"
+                android:textColor="@color/main_page_tab_select_text_color"
+                android:textSize="@dimen/setting_text_font" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/detail_setting_action"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_setting_title"
+            android:layout_marginLeft="@dimen/setting_margin"
+            android:layout_marginRight="@dimen/setting_margin"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/detail_setting_btn_sub"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginRight="@dimen/setting_btn_margin"
+                android:layout_weight="1"
+                android:background="@drawable/setting_item_bg"
+                android:text="@string/setting_font_size_sub"
+                android:textColor="@color/main_page_setting_btn_color"
+                android:textSize="@dimen/setting_btn_font" />
+
+            <Button
+                android:id="@+id/detail_setting_btn_add"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginRight="@dimen/setting_btn_margin"
+                android:layout_weight="1"
+                android:background="@drawable/setting_item_bg"
+                android:text="@string/setting_font_size_add"
+                android:textColor="@color/main_page_setting_btn_color"
+                android:textSize="@dimen/setting_btn_font" />
+
+            <Button
+                android:id="@+id/detail_setting_btn_day"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginRight="@dimen/setting_btn_margin"
+                android:layout_weight="1"
+                android:background="@drawable/setting_item_bg"
+                android:text="@string/skin_color_day_name"
+                android:textColor="@color/main_page_setting_btn_color"
+                android:textSize="@dimen/setting_btn_font" />
+
+            <Button
+                android:id="@+id/detail_setting_btn_night"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_weight="1"
+                android:background="@drawable/setting_item_bg"
+                android:text="@string/skin_color_night_name"
+                android:textColor="@color/main_page_setting_btn_color"
+                android:textSize="@dimen/setting_btn_font" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/text_utils"
+        android:layout_width="fill_parent"
+        android:layout_height="36dp"
+        android:layout_below="@id/txt_title"
+        android:layout_marginTop="2dp"
+        android:visibility="gone" >
+
+        <Button
+            android:id="@+id/text_utils_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/setting_btn_margin"
+            android:background="@drawable/setting_item_bg"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:text="@string/text_util_copy"
+            android:textColor="@color/main_page_setting_btn_color"
+            android:textSize="@dimen/setting_btn_font" />
+
+        <Button
+            android:id="@+id/text_utils_baidu"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/setting_btn_margin"
+            android:layout_toLeftOf="@id/text_utils_copy"
+            android:background="@drawable/setting_item_bg"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:text="@string/text_util_baidu"
+            android:textColor="@color/main_page_setting_btn_color"
+            android:textSize="@dimen/setting_btn_font" />
+
+        <Button
+            android:id="@+id/text_utils_google"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/setting_btn_margin"
+            android:layout_toLeftOf="@id/text_utils_baidu"
+            android:background="@drawable/setting_item_bg"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:text="@string/text_util_google"
+            android:textColor="@color/main_page_setting_btn_color"
+            android:textSize="@dimen/setting_btn_font" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tab_sutra_view"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:background="@color/golden"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/list_primary"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/light_golden"
+        android:dividerHeight="1dp"
+        android:scrollbarFadeDuration="2000" />
+
+    <ListView
+        android:id="@+id/list_secondary"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/light_golden"
+        android:dividerHeight="1dp"
+        android:scrollbarFadeDuration="2000"
+        android:visibility="gone" />
+
+</LinearLayout>

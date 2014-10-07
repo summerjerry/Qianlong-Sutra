@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">乾隆大藏经</string>
+    <string name="sutra_entrance">阅读经典</string>
+    <string name="history">阅读历史</string>
+    <string name="copying_db">第一次读取数据可能需要较长时间，请稍候...</string>
+    <string name="sd_error">SD卡错误</string>
+    <string name="db_error">您是否使用Android3.0以下系统,数据库无法读取1M以上数据</string>
+    <string name="brightness">调节亮度</string>
+    <string name="font_size">字体大小</string>
+    <string name="skin">皮肤</string>
+    <string name="setting_brightness">亮度</string>
+    <string name="setting_font_size">字号</string>
+    <string name="setting_read_mode">阅读模式</string>
+    <string name="setting_font_size_add">A+</string>
+    <string name="setting_font_size_sub">A-</string>
+    <string name="skin_color_day_name">白天</string>
+    <string name="skin_color_night_name">夜间</string>
+    <string name="search">搜索</string>
+    <string name="cancel">取消</string>
+    <string name="input_sutra">请输入经典名称</string>
+    <string name="input_can_not_null">经典名不能为空</string>
+    <string name="input_can_not_known">不能识别输入的经典名</string>
+    <string name="search_no_result">无法找到名字类似的经典</string>
+    <string name="text_util_copy">复制</string>
+    <string name="text_util_baidu">百度搜索</string>
+    <string name="text_util_google">谷歌搜索</string>
+    <string name="error_no_browser">您的手机没有安装浏览器</string>
+    <string name="copy_to_clipboard">已复制至剪贴板</string>
+    <string name="next_page">下一页</string>
+
+</resources>

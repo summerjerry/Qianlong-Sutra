@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">QianLongSutra</string>
+    <string name="sutra_entrance">Sutra Entrace</string>
+    <string name="history">Read History</string>
+    <string name="copying_db">Loading database will take a long time, pls wait...</string>
+    <string name="sd_error">SD card error</string>
+    <string name="db_error">Is your Android version is below 3.0, database can not reader data bigger than 1M</string>
+    <string name="brightness">Brightness</string>
+    <string name="font_size">Font size</string>
+    <string name="skin">Skin</string>
+    <string name="setting_brightness">BrightNess</string>
+    <string name="setting_font_size">Font Size</string>
+    <string name="setting_read_mode">Read Mode</string>
+    <string name="setting_font_size_add">A+</string>
+    <string name="setting_font_size_sub">A-</string>
+    <string name="search">Search</string>
+    <string name="cancel">Cancel</string>
+    <string name="input_sutra">Please input Sutra name</string>
+    <string name="input_can_not_null">Sutra name can not be empty</string>
+    <string name="input_can_not_known">Input name can not be known</string>
+    <string name="search_no_result">There is no similar Sutra</string>
+    <string name="text_util_copy">Copy</string>
+    <string name="text_util_baidu">Baidu</string>
+    <string name="text_util_google">Google</string>
+    <string name="error_no_browser">Your phone do not have a Web browser</string>
+    <string name="copy_to_clipboard">Already copy to clipboard</string>
+    <string name="next_page">Next</string>
+
+    <!-- Define skin name -->
+    <string name="skin_color_day" translatable="false">day</string>
+    <string name="skin_color_night" translatable="false">night</string>
+    <string name="skin_color_day_name">day</string>
+    <string name="skin_color_night_name">night</string>
+
+</resources>
