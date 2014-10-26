@@ -134,6 +134,28 @@ public class HistoryDbHelper extends SQLiteOpenHelper {
   }
 
   /**
+   * Delete one item to SutraHistoryTable
+   * @param sId
+   * @return
+   */
+  public boolean delete(String sId) {
+    Logger.log("HistoryDbHelper delete");
+
+    if (Utils.isStringEmpty(sId)) {
+      return false;
+    }
+
+    SQLiteDatabase db = this.getWritableDatabase();
+    String[] args = { String.valueOf(sId) };
+    long ret = db.delete(CREATE_SUTRA_HISTORY_TABLE, SutraHistoryTableItem.SINDEX + "=?", args);
+
+    if (ret == -1) {
+      return false;
+    }
+    return true;
+  }
+
+  /**
    * Get SutraHistoryTableItem by sIndex
    * @param sIndex
    * @return SutraHistoryTableItem or null

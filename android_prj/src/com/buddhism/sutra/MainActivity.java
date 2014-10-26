@@ -12,6 +12,7 @@ package com.buddhism.sutra;
 
 import com.buddhism.base.BaseActivity;
 import com.buddhism.skin.SkinManager;
+import com.buddhism.sutra.HistoryListAdapter.OnDeleteBtnClickListener;
 import com.buddhism.sutra.data.DbHistoryListData;
 import com.buddhism.sutra.data.DbListener;
 import com.buddhism.sutra.data.DbPrimaryIndexData;
@@ -26,7 +27,10 @@ import com.buddhism.sutra.data.SutraDbHelper.SutraSecondaryIndexItem;
 import com.buddhism.util.Logger;
 import com.buddhism.util.Utils;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -177,6 +181,7 @@ public class MainActivity extends BaseActivity implements DbListener {
     Context context;
     List<View> viewList;
 
+    @SuppressLint("InflateParams")
     public MainPagerAdapter(Context context) {
       this.context = context;
       this.viewList = new LinkedList<View>();
@@ -205,6 +210,51 @@ public class MainActivity extends BaseActivity implements DbListener {
       MainActivity.this.mHistoryListView.setAdapter(MainActivity.this.mHistoryAdapter);
       MainActivity.this.mHistoryListView
           .setOnItemClickListener(MainActivity.this.mHistoryListItemClickListener);
+      MainActivity.this.mHistoryAdapter.setOnBtnClickListener(new OnDeleteBtnClickListener() {
+
+        @Override
+        public void onDeleteBtnClicked(final String id) {
+          AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).create();
+          dialog.setTitle(MainActivity.this.getString(R.string.delete_record));
+          dialog.setCancelable(true);
+
+          dialog.setButton(DialogInterface.BUTTON_POSITIVE, MainActivity.this
+              .getString(R.string.ok), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+              // Delete history db.
+              if (MainActivity.this.mHistoryAdapter.deleteItemBySId(id)) {
+                Toast.makeText(
+                    MainActivity.this,
+                    MainActivity.this.getString(R.string.delete_success),
+                    Toast.LENGTH_SHORT).show();
+
+                return;
+              }
+
+              Toast.makeText(
+                  MainActivity.this,
+                  MainActivity.this.getString(R.string.delete_failed),
+                  Toast.LENGTH_SHORT).show();
+            }
+          });
+
+          dialog.setButton2(
+              MainActivity.this.getString(R.string.cancel),
+              new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                  // Do nothing
+                }
+
+              });
+
+          dialog.show();
+        }
+
+      });
       this.viewList.add(historyPage);
 
       // Init search tab

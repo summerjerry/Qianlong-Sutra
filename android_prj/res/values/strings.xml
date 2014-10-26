@@ -27,6 +27,10 @@
     <string name="error_no_browser">Your phone do not have a Web browser</string>
     <string name="copy_to_clipboard">Already copy to clipboard</string>
     <string name="next_page">Next</string>
+    <string name="delete_record">Do you want to delete this record?</string>
+    <string name="delete_success">Delete success</string>
+    <string name="delete_failed">Delete failed</string>
+    <string name="ok">OK</string>
 
     <!-- Define skin name -->
     <string name="skin_color_day" translatable="false">day</string>

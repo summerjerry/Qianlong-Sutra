@@ -665,9 +665,14 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
   }
 
   private long getCurrentScrollPercent() {
+    long lineHeight = this.mTextView.getLineHeight();
+    long lineCount = this.mTextView.getLineCount();
+    if (lineHeight * lineCount == 0) {
+      return 0;
+    }
+
     long percent = (long) this.mScrollView.getScrollY()
-        * HistoryDbHelper.SUTRA_HISTORY_PERCENT
-        / ((long) this.mTextView.getLineCount() * (long) this.mTextView.getLineHeight());
+        * HistoryDbHelper.SUTRA_HISTORY_PERCENT / (lineCount * lineHeight);
     return percent;
   }
 
