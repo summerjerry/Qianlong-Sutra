@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tab_sutra_view"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:background="@color/golden"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/search_header"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_header_height"
+        android:background="@color/search_bg_color" >
+
+        <TextView
+            android:id="@+id/search_btn"
+            android:layout_width="50dp"
+            android:layout_height="@dimen/outer_button_height"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/settingitem_margin"
+            android:layout_marginRight="@dimen/settingitem_margin"
+            android:clickable="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/search"
+            android:textColor="@color/search_text_color"
+            android:textSize="15sp" />
+
+        <ProgressBar
+            android:id="@+id/search_loading"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="18dp"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/search_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_toLeftOf="@id/search_btn"
+            android:background="@drawable/search_bar_title_edit_background"
+            android:clickable="true"
+            android:ellipsize="end"
+            android:hint="@string/input_sutra"
+            android:imeOptions="actionSearch"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/font_color_dark"
+            android:textSize="15sp" >
+        </EditText>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/shadow" >
+        </View>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/list_history"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/light_golden"
+        android:dividerHeight="1dp"
+        android:scrollbarFadeDuration="2000" />
+
+</LinearLayout>

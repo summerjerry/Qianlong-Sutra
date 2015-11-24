@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- We should add comments to explain font size, default value is small one -->
+    <dimen name="sutra_content_size">17sp</dimen>
+    <dimen name="sutra_title_size">15sp</dimen>
+    <dimen name="middle_sutra_content_size">19sp</dimen>
+    <dimen name="big_sutra_content_size">21sp</dimen>
+    <dimen name="setting_size">17sp</dimen>
+    <dimen name="middle_setting_size">19sp</dimen>
+    <dimen name="big_setting_size">21sp</dimen>
+    <dimen name="title_size">17sp</dimen>
+    <dimen name="middle_title_size">19sp</dimen>
+    <dimen name="big_title_size">21sp</dimen>
+
+</resources>

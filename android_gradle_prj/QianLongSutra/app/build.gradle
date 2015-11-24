@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 10
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.buddhism.sutra"
+        minSdkVersion 10
+        targetSdkVersion 10
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("key/yunyun_key")
+            storePassword "yunyun_key20110926_123456"
+            keyAlias "yunyun"
+            keyPassword "yunyun_key20110926_123456"
+        }
+    }
+
+    productFlavors {
+        googleplay {
+            applicationId = "com.buddhism.sutrass"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles "proguard.cfg"
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src/java']
+            resources.srcDirs = ['resources']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['main/assets']
+        }
+
+        googleplay {
+            assets.srcDirs = ['googleplay/assets']
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:18.0.0'
+    compile files('libs/jcc-bate-0.7.3.jar')
+}
