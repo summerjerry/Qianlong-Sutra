@@ -10,13 +10,13 @@
 
 package com.buddhism.base;
 
-import com.buddhism.skin.SkinManager;
-import com.buddhism.skin.SkinSettingInfo;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseArray;
+
+import com.buddhism.skin.SkinManager;
+import com.buddhism.skin.SkinSettingInfo;
 
 import java.util.List;
 

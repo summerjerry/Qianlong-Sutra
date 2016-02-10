@@ -10,13 +10,13 @@
 
 package com.buddhism.sutra;
 
-import com.buddhism.base.ContextProvider;
-import com.buddhism.base.SharedPreferencesManager;
-import com.buddhism.skin.SkinManager;
-
 import android.app.Application;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+
+import com.buddhism.base.ContextProvider;
+import com.buddhism.base.SharedPreferencesManager;
+import com.buddhism.skin.SkinManager;
 
 /**
  * This class used to support some global infomation for the whole application

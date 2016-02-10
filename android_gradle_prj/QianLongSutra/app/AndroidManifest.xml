@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.buddhism.sutra"
-    android:versionCode="16"
-    android:versionName="1.16" >
+    android:versionCode="19"
+    android:versionName="1.19" >
 
     <uses-sdk
         android:minSdkVersion="10"
-        android:targetSdkVersion="10" />
+        android:targetSdkVersion="16" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -37,6 +37,12 @@
             android:name="com.buddhism.sutra.SutraDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.buddhism.sutra.SearchResultActivity"
+            android:theme="@android:style/Theme.Translucent"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

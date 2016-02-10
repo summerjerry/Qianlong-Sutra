@@ -1,7 +1,5 @@
 package com.buddhism.util;
 
-import android.widget.ScrollView;
-
 /**
  * Created by summerxiaqing on 15/11/21.
  * <p/>

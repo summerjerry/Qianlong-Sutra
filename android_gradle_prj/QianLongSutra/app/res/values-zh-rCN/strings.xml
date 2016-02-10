@@ -26,7 +26,8 @@
     <string name="input_can_not_null">经典名不能为空</string>
     <string name="input_can_not_known">不能识别输入的经典名</string>
     <string name="search_no_result">无法找到名字类似的经典</string>
-    <string name="text_util_copy">复制</string>
+    <string name="search_no_word_result">无法找到此关键字的释义</string>
+    <string name="text_util_copy">复制并查找</string>
     <string name="text_util_baidu">百度搜索</string>
     <string name="text_util_google">谷歌搜索</string>
     <string name="error_no_browser">您的手机没有安装浏览器</string>
@@ -36,5 +37,7 @@
     <string name="delete_success">删除成功</string>
     <string name="delete_failed">删除失败</string>
     <string name="ok">确认</string>
+    <string name="ding">摘自丁福保先生佛学大词典</string>
+
 
 </resources>

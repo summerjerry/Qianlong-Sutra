@@ -1,13 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 10
+    compileSdkVersion 16
     buildToolsVersion "21.1.2"
 
     defaultConfig {
         applicationId "com.buddhism.sutra"
         minSdkVersion 10
-        targetSdkVersion 10
+        targetSdkVersion 16
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(
+                    output.outputFile.parent,
+                    output.outputFile.name.replace(".apk", "-${variant.versionName}.apk").replace
+                            ("app", "QianlongSutra"))
+        }
     }
 
     signingConfigs {
@@ -20,8 +29,13 @@ android {
     }
 
     productFlavors {
+        store360 {
+            resValue "string", "package_name", "com.buddhism.sutra"
+        }
+
         googleplay {
             applicationId = "com.buddhism.sutrass"
+            resValue "string", "package_name", "com.buddhism.sutrass"
         }
     }
 
@@ -40,6 +54,10 @@ android {
             resources.srcDirs = ['resources']
             res.srcDirs = ['res']
             assets.srcDirs = ['main/assets']
+        }
+
+        store360 {
+
         }
 
         googleplay {

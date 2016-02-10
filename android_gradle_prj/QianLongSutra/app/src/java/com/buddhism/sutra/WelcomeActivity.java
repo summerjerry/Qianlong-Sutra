@@ -10,16 +10,16 @@
 
 package com.buddhism.sutra;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.widget.Toast;
+
 import com.buddhism.base.BaseActivity;
 import com.buddhism.sutra.data.DbListener;
 import com.buddhism.sutra.data.DbRequest;
 import com.buddhism.sutra.data.DbResponseData;
 import com.buddhism.util.Logger;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.widget.Toast;
 
 public class WelcomeActivity extends BaseActivity implements DbListener {
   private static final int PAGE_TIMER = 3000;
@@ -38,7 +38,7 @@ public class WelcomeActivity extends BaseActivity implements DbListener {
   }
 
   /**
-   * 
+   *
    */
   private void prepareForNextStep(int timer) {
     timer = timer > 0 ? timer : PAGE_TIMER;

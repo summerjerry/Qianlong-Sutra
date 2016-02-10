@@ -21,8 +21,6 @@ Date: 2013 04 26
 
 package com.buddhism.view;
 
-import com.buddhism.sutra.R;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -36,6 +34,8 @@ import android.view.ViewTreeObserver;
 import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.buddhism.sutra.R;
 
 /**
  * User: ray Date: 2013-02-01 <p/> WARNING: SelectableTextView is designed to be used inside a

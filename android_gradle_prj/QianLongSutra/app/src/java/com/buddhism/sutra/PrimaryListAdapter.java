@@ -10,11 +10,6 @@
 
 package com.buddhism.sutra;
 
-import com.buddhism.skin.OnSkinChangedListener;
-import com.buddhism.skin.SkinManager;
-import com.buddhism.sutra.data.SutraDbHelper.SutraPrimaryIndexItem;
-import com.buddhism.util.Utils;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +17,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import taobe.tec.jcc.JChineseConvertor;
+import com.buddhism.skin.OnSkinChangedListener;
+import com.buddhism.skin.SkinManager;
+import com.buddhism.sutra.data.SutraDbHelper.SutraPrimaryIndexItem;
+import com.buddhism.util.Utils;
 
 import java.io.IOException;
 import java.util.List;
+
+import taobe.tec.jcc.JChineseConvertor;
 
 /**
  * @author summerxiaqing

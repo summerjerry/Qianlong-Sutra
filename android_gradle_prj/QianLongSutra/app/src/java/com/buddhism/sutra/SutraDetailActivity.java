@@ -7,6 +7,29 @@
 
 package com.buddhism.sutra;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.ClipboardManager;
+import android.text.Editable;
+import android.text.Layout;
+import android.text.SpannableString;
+import android.text.TextWatcher;
+import android.util.TypedValue;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.buddhism.base.BaseActivity;
 import com.buddhism.base.SharedPreferencesManager;
 import com.buddhism.skin.SkinManager;
@@ -24,35 +47,9 @@ import com.buddhism.view.ObservableScrollView;
 import com.buddhism.view.OnScrollChangedListener;
 import com.buddhism.view.SelectableTextView;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.ClipboardManager;
-import android.text.Editable;
-import android.text.Layout;
-import android.text.SpannableString;
-import android.text.TextWatcher;
-import android.util.TypedValue;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import android.widget.Toast;
+import java.io.IOException;
 
 import taobe.tec.jcc.JChineseConvertor;
-
-import java.io.IOException;
 
 /**
  * @author summerxiaqing
@@ -120,7 +117,7 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
                     .log("mFontBtnClickListener add fontsize = " +
                         SutraDetailActivity.this.getFontSize());
                 SutraDetailActivity.this.setFontSize(SutraDetailActivity.this.getFontSize() + 1);
-                SutraDetailActivity.this.onResetFontsize();
+                SutraDetailActivity.this.onResetFontSize();
             }
 
             if (v == SutraDetailActivity.this.mFontSubBtn) {
@@ -128,7 +125,7 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
                     .log("mFontBtnClickListener sub fontsize = " +
                         SutraDetailActivity.this.getFontSize());
                 SutraDetailActivity.this.setFontSize(SutraDetailActivity.this.getFontSize() - 1);
-                SutraDetailActivity.this.onResetFontsize();
+                SutraDetailActivity.this.onResetFontSize();
             }
         }
 
@@ -154,6 +151,12 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
                     SutraDetailActivity.this,
                     SutraDetailActivity.this.getString(R.string.copy_to_clipboard),
                     Toast.LENGTH_LONG).show();
+
+                // Start search Activity.
+                Intent intent = new Intent(SutraDetailActivity.this, SearchResultActivity.class);
+                intent.putExtra(Intent.EXTRA_TEXT, selectStr);
+                SutraDetailActivity.this.startActivity(intent);
+                return;
             } else if (v == SutraDetailActivity.this.mUtilBaidu) {
                 if (Utils.isStringEmpty(selectStr) || selectStr.length() > 50) {
                     SutraDetailActivity.this.switchUtilsView(true);
@@ -175,7 +178,7 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
 
     };
 
-    private void onResetFontsize () {
+    private void onResetFontSize () {
         long percent = this.getCurrentScrollPercent();
         this.onRefreshSkin();
         this.setScrollTo(percent);
@@ -256,27 +259,27 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
     }
 
     private void setFontBtnStyle () {
-        this.mFontAddBtn
-            .setBackgroundDrawable(SkinManager.getDrawableById(R.drawable.setting_item_bg));
+        Utils.setBackgroundDrawableToView(this.mFontAddBtn,
+            SkinManager.getDrawableById(R.drawable.setting_item_bg));
         this.mFontAddBtn.setTextColor(SkinManager
             .getColorById(R.color.main_page_setting_btn_color));
-        this.mFontSubBtn
-            .setBackgroundDrawable(SkinManager.getDrawableById(R.drawable.setting_item_bg));
+        Utils.setBackgroundDrawableToView(this.mFontSubBtn,
+            SkinManager.getDrawableById(R.drawable.setting_item_bg));
         this.mFontSubBtn
             .setTextColor(SkinManager.getColorById(R.color.main_page_setting_btn_color));
     }
 
     private void setUtilsBtnStyle () {
-        this.mUtilCopy
-            .setBackgroundDrawable(SkinManager.getDrawableById(R.drawable.setting_item_bg));
+        Utils.setBackgroundDrawableToView(this.mUtilCopy,
+            SkinManager.getDrawableById(R.drawable.setting_item_bg));
         this.mUtilCopy.setTextColor(SkinManager
             .getColorById(R.color.main_page_setting_btn_color));
-        this.mUtilBaidu
-            .setBackgroundDrawable(SkinManager.getDrawableById(R.drawable.setting_item_bg));
+        Utils.setBackgroundDrawableToView(this.mUtilBaidu,
+            SkinManager.getDrawableById(R.drawable.setting_item_bg));
         this.mUtilBaidu.setTextColor(SkinManager
             .getColorById(R.color.main_page_setting_btn_color));
-        this.mUtilGoogle
-            .setBackgroundDrawable(SkinManager.getDrawableById(R.drawable.setting_item_bg));
+        Utils.setBackgroundDrawableToView(this.mUtilGoogle,
+            SkinManager.getDrawableById(R.drawable.setting_item_bg));
         this.mUtilGoogle.setTextColor(SkinManager
             .getColorById(R.color.main_page_setting_btn_color));
     }
@@ -341,6 +344,8 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
                 if (!SutraDetailActivity.this.mIsHideUtilsView) {
                     SutraDetailActivity.this.switchUtilsView(true);
 
+                    // NOTE(qingxia): We edited the interaction with setting view. Now setting
+                    // view will switch by setting button in the title bar.
                     if (!SutraDetailActivity.this.mIsHideSettingView) {
                         SutraDetailActivity.this.switchSettingView(true);
                     }
@@ -351,8 +356,13 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
                     return;
                 }
 
-                SutraDetailActivity.this.switchSettingView(!SutraDetailActivity.this
-                    .mIsHideSettingView);
+                // NOTE(qingxia): We edited the interaction with setting view. Now setting view will
+                // switch by setting button in the title bar.
+                //                SutraDetailActivity.this.switchSettingView(!SutraDetailActivity
+                // .this.mIsHideSettingView);
+                if (!SutraDetailActivity.this.mIsHideSettingView) {
+                    SutraDetailActivity.this.switchSettingView(true);
+                }
             }
         });
 
@@ -384,6 +394,32 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
             public void onClick (View view) {
                 SutraDetailActivity.this.switchSearchTextView(
                     !SutraDetailActivity.this.isSearchUtilViewHide);
+            }
+        });
+
+        this.mSearchBtn = this.findViewById(R.id.setting_btn);
+        this.mSearchBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick (View view) {
+                // Swith setting view's status.
+                if (view == SutraDetailActivity.this.mSearchBtn) {
+                    if (!SutraDetailActivity.this.mIsHideUtilsView) {
+                        SutraDetailActivity.this.switchUtilsView(true);
+
+                        if (!SutraDetailActivity.this.mIsHideSettingView) {
+                            SutraDetailActivity.this.switchSettingView(true);
+                        }
+                        return;
+                    }
+
+                    if (!SutraDetailActivity.this.isSearchUtilViewHide) {
+                        return;
+                    }
+
+
+                    SutraDetailActivity.this
+                        .switchSettingView(!SutraDetailActivity.this.mIsHideSettingView);
+                }
             }
         });
 
@@ -480,14 +516,6 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
         });
 
         this.mContentProgressBar = this.findViewById(R.id.content_progress_bar);
-
-        boolean isShowContentProgressBar = this.isShowContentProgressBar();
-        if (isShowContentProgressBar) {
-            this.mContentProgressBar.setVisibility(View.VISIBLE);
-        } else {
-            this.mContentProgressBar.setVisibility(View.GONE);
-        }
-
         this.mShowProgressBtn = (Button) this.findViewById(R.id.show_content_progress);
 
         this.mShowProgressBtn.setOnClickListener(new OnClickListener() {
@@ -509,6 +537,15 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
             }
 
         });
+
+        boolean isShowContentProgressBar = this.isShowContentProgressBar();
+        if (isShowContentProgressBar) {
+            this.mContentProgressBar.setVisibility(View.VISIBLE);
+            this.mShowProgressBtn.setText(R.string.setting_hide);
+        } else {
+            this.mContentProgressBar.setVisibility(View.GONE);
+            this.mShowProgressBtn.setText(R.string.setting_show);
+        }
     }
 
     /**
@@ -600,7 +637,7 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
         return SharedPreferencesManager.getBoolean(
             SETTING_NAME,
             SHOW_CONTENT_PROGRESS,
-            false);
+            true);
     }
 
     private void showContentProgressBar (boolean isShow) {
@@ -835,16 +872,16 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
             .getColorById(R.color.main_page_setting_bg));
         this.mTitleView.setTextColor(SkinManager
             .getColorById(R.color.main_page_tab_select_text_color));
-        this.mTitleBarView
-            .setBackgroundDrawable(SkinManager.getDrawableById(R.drawable.tab_selected));
-        this.mTextSearchView
-            .setBackgroundDrawable(SkinManager.getDrawableById(R.drawable.tab_selected));
+        Utils.setBackgroundDrawableToView(this.mTitleBarView,
+            SkinManager.getDrawableById(R.drawable.tab_selected));
+        Utils.setBackgroundDrawableToView(this.mTextSearchView,
+            SkinManager.getDrawableById(R.drawable.tab_selected));
         this.mUtilView.setBackgroundColor(SkinManager.getColorById(R.color.main_page_setting_bg));
         this.setSkinBtnStyle();
         this.setFontBtnStyle();
         this.setUtilsBtnStyle();
-        this.mShowProgressBtn.setBackgroundDrawable(SkinManager
-            .getDrawableById(R.drawable.setting_item_bg));
+        Utils.setBackgroundDrawableToView(this.mShowProgressBtn,
+            SkinManager.getDrawableById(R.drawable.setting_item_bg));
         this.mShowProgressBtn.setTextColor(SkinManager
             .getColorById(R.color.main_page_setting_btn_color));
         this.mSeekBar.setThumb(SkinManager.getDrawableById(R.drawable.seek_bt));
@@ -879,9 +916,11 @@ public class SutraDetailActivity extends BaseActivity implements DbListener, OnC
      */
     @Override
     public void onClick (View v) {
-        if (v == this.mTextView) {
-            this.switchSettingView(!this.mIsHideSettingView);
-        }
+        // NOTE(qingxia): We edited the interaction with setting view. Now setting view will
+        // switch by setting button in the title bar.
+        // if (v == this.mTextView) {
+        //    this.switchSettingView(!this.mIsHideSettingView);
+        // }
     }
 
     private int getBrightness () {

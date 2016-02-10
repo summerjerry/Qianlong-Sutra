@@ -10,15 +10,15 @@
 
 package com.buddhism.sutra.data;
 
-import com.buddhism.base.ContextProvider;
-import com.buddhism.util.Logger;
-import com.buddhism.util.Utils;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.buddhism.base.ContextProvider;
+import com.buddhism.util.Logger;
+import com.buddhism.util.Utils;
 
 import java.io.IOException;
 import java.util.ArrayList;

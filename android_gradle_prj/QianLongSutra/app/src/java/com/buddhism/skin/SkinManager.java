@@ -7,9 +7,6 @@
 
 package com.buddhism.skin;
 
-import com.buddhism.base.ContextProvider;
-import com.buddhism.util.Utils;
-
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -21,6 +18,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.view.View;
+
+import com.buddhism.base.ContextProvider;
+import com.buddhism.sutra.R;
+import com.buddhism.util.Logger;
+import com.buddhism.util.Utils;
 
 import java.util.HashMap;
 
@@ -34,6 +36,11 @@ final public class SkinManager {
   private static final String sWeiboReaderPackage = "com.buddhism.sutra";
   private static String sCurrentPackage = sWeiboReaderPackage;
   private static HashMap<Integer, SkinInfo> sSkinMap = new HashMap<Integer, SkinInfo>();
+
+  static {
+    sCurrentPackage = ContextProvider.getApplicationContext().getString(R.string.package_name);
+    Logger.log("sCurrentPackage = " + sCurrentPackage);
+  }
 
   public static void addSkin(String skinID, String skinName, int skinDefaultColor) {
     SkinInfo skinInfo = new SkinInfo(sSkinCount++, skinID, skinName, skinDefaultColor);
@@ -118,7 +125,7 @@ final public class SkinManager {
   }
 
   /**
-   * @param sCurrentSkinIndex
+   * @param currentSkinIndex
    *          the sCurrentSkinIndex to set
    */
   public static void setCurrentSkinIndex(int currentSkinIndex) {
@@ -140,7 +147,7 @@ final public class SkinManager {
    * {@link android.content.Context#obtainStyledAttributes(int[])
    * Context.obtainStyledAttributes} with an array containing the resource ID of interest
    * to create the TypedArray. </p>
-   * @param name
+   * @param resId
    *          The desired resource name.
    * @throws NotFoundException
    *           Throws NotFoundException if the given ID does not exist.
@@ -164,7 +171,7 @@ final public class SkinManager {
    * converted to integer pixels for use as a size. A size conversion involves rounding
    * the base value, and ensuring that a non-zero base value is at least one pixel in
    * size.
-   * @param name
+   * @param resId
    *          The desired resource name.
    * @return Resource dimension value multiplied by the appropriate metric and truncated
    *         to integer pixels.
@@ -185,7 +192,7 @@ final public class SkinManager {
    * Return a color integer associated with a particular resource name. If the resource
    * holds a complex {@link android.content.res.ColorStateList}, then the default color
    * from the set is returned.
-   * @param name
+   * @param resId
    *          The desired resource name.
    * @throws NotFoundException
    *           Throws NotFoundException if the given ID does not exist.
