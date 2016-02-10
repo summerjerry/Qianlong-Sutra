@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">乾隆大藏經</string>
+    <string name="sutra_entrance">閱讀經典</string>
+    <string name="history">閱讀曆史</string>
+    <string name="copying_db">第一次讀取數據可能需要較長時間，請稍候...</string>
+    <string name="sd_error">SD卡錯誤</string>
+    <string name="db_error">您是否使用Android3.0以下系統,數據庫無法讀取1M以上數據</string>
+    <string name="brightness">調節亮度</string>
+    <string name="font_size">字體大小</string>
+    <string name="skin">皮膚</string>
+    <string name="setting_brightness">亮度</string>
+    <string name="setting_font_size">字號</string>
+    <string name="setting_read_mode">閱讀模式</string>
+    <string name="setting_show_progress">顯示進度條</string>
+    <string name="setting_show">顯示</string>
+    <string name="setting_hide">隱藏</string>
+    <string name="setting_font_size_add">A+</string>
+    <string name="setting_font_size_sub">A-</string>
+    <string name="skin_color_day_name">白天</string>
+    <string name="skin_color_night_name">夜間</string>
+    <string name="search">搜索</string>
+    <string name="cancel">取消</string>
+    <string name="input_sutra">請輸入經典名稱</string>
+    <string name="input_can_not_null">經典名稱不能爲空</string>
+    <string name="input_can_not_known">不能識別輸入的經典名</string>
+    <string name="search_no_result">無法找到類似名字的經典</string>
+    <string name="search_no_word_result">無法找到此關鍵字的釋義</string>
+    <string name="text_util_copy">復制並查找</string>
+    <string name="text_util_baidu">百度搜索</string>
+    <string name="text_util_google">谷歌搜索</string>
+    <string name="error_no_browser">您的手機沒有安裝瀏覽器</string>
+    <string name="copy_to_clipboard">已復制至剪貼板</string>
+    <string name="next_page">下一頁</string>
+    <string name="delete_record">確認刪除此條記錄?</string>
+    <string name="delete_success">刪除成功</string>
+    <string name="delete_failed">刪除失敗</string>
+    <string name="ok">確定</string>
+    <string name="ding">摘自丁福保先生佛學大詞典</string>
+
+</resources>
