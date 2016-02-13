@@ -31,11 +31,19 @@ android {
     productFlavors {
         store360 {
             resValue "string", "package_name", "com.buddhism.sutra"
+            resValue "string", "db_path", "/sutradb_1/"
         }
 
         googleplay {
             applicationId = "com.buddhism.sutrass"
             resValue "string", "package_name", "com.buddhism.sutrass"
+            resValue "string", "db_path", "/sutradb_1/"
+        }
+
+        dzz {
+            applicationId = "com.buddhism.sutradzz"
+            resValue "string", "package_name", "com.buddhism.sutradzz"
+            resValue "string", "db_path", "/sutradb_dzz_1/"
         }
     }
 
@@ -62,6 +70,11 @@ android {
 
         googleplay {
             assets.srcDirs = ['googleplay/assets']
+        }
+
+        dzz {
+            assets.srcDirs = ['dzz/assets']
+            res.srcDirs = ['dzz/res']
         }
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">QianLongSutra</string>
+    <string name="app_name">QianLong Tripitaka</string>
     <string name="sutra_entrance">Sutra Entrace</string>
     <string name="history">Read History</string>
     <string name="copying_db">Loading database will take a long time, pls wait...</string>

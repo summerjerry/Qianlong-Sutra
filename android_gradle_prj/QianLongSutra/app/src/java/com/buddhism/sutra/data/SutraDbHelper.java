@@ -14,7 +14,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 
+import com.buddhism.base.ContextProvider;
 import com.buddhism.sutra.MyApplication;
+import com.buddhism.sutra.R;
 import com.buddhism.util.Logger;
 import com.buddhism.util.Utils;
 
@@ -143,7 +145,8 @@ public class SutraDbHelper extends SQLiteOpenHelper {
         Environment.getExternalStorageDirectory().getPath() + "/sutradb/";
 
     private final static String DB_PATH_1 =
-        Environment.getExternalStorageDirectory().getPath() + "/sutradb_1/";
+        Environment.getExternalStorageDirectory().getPath() + ContextProvider
+            .getApplicationContext().getString(R.string.db_path);
 
     // The name of our data base file. It must be in our folder assets.
     private final static String DB_NAME = "qldz.db";
@@ -344,7 +347,8 @@ public class SutraDbHelper extends SQLiteOpenHelper {
             while (!cur.isAfterLast()) {
                 Logger.log(cur.getString(primaryIndex) + "|" + cur.getString(primaryName));
                 list.add(
-                    new SutraPrimaryIndexItem(cur.getString(primaryIndex),
+                    new SutraPrimaryIndexItem(cur.getString(primaryIndex), cur.getString
+                        (primaryIndex) + "-" +
                         cur.getString(primaryName)));
                 cur.moveToNext();
             }
@@ -370,11 +374,11 @@ public class SutraDbHelper extends SQLiteOpenHelper {
         Cursor cur = this.mDataBase.query(
             TABLE_SECONDARY_INDEX,
             new String[]{SECONDARY_INDEX_ID, SECONDARY_INDEX_NAME},
-            PRIMARY_INDEX_ID + "=" + pIndex,
+            PRIMARY_INDEX_ID + "=" + "'" + pIndex +"'",
             null,
             null,
             null,
-            null);
+            SECONDARY_INDEX_ID);
         if (cur == null) {
             return list;
         }
